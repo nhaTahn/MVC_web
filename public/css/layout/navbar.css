@@ -1,172 +1,142 @@
-/* Basic styling */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+
+nav{
+  background: #000;
+  padding: 5px 20px;
 }
-body {
-  font-family: sans-serif;
-}
-.header{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80px;
-  max-width: 100%;
-}
-.navbar {
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
-  height: 7vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-.navbar ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
+nav ul{
   list-style: none;
-  align-items: center;
 }
-.navbar li {
-  position: relative;
-}
-a {
+nav ul,li,a{
   color: white;
   text-decoration: none;
 }
-.item a:hover {
-  border: 2px solid #fff;
-  background-color: #0056b3;
-  transition: all 0.2s ease-out;
+nav a:hover{
+  text-decoration: underline;
 }
-.logo a:hover {
-  text-decoration: none;
+.menu li{
+  font-size: 16px;
+  padding: 15px 5px;
 }
-
-.logo a,
-.toggle a {
-  font-size: 20px;
-}
-.logo img{
-  height: 60px;
-  width: 60px;
-  margin-left: 40px;
-}
-.button.secondary {
-  border-bottom: 1px #444 solid;
-}
-
-/* Mobile menu */
-.menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-.toggle {
-  order: 1;
-}
-.item.button {
-  order: 3;
-}
-.item {
-  width: 100%;
-  text-align: center;
-  order: 2;
-  display: none;
-}
-.item.active {
+.menu li a{
   display: block;
 }
-
-/* Navbar Toggle */
-.toggle {
-  cursor:pointer;
+.menu .logo a{
+  font-size: 20px;
 }
-.bars {
+.menu .item.button.secondary{
+  border-bottom: 1px #444 solid;
+}
+/*Mobile Menu*/
+.menu{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu .toggle{
+  order: 1;
+}
+.menu .item.button{
+  order: 2;
+}
+.menu .item{
+  width: 100%;
+  text-align: center;
+  order: 3;
+  display: none;
+}
+.menu .item.active{
+  display: block;
+
+}
+.menu .toggle{
+  cursor: pointer;
+
+}
+.menu .toggle .bars{
   background: #999;
   display: inline-block;
   height: 2px;
   position: relative;
-  transition: background .2s ease-out;
+  width: 18px;
+
+}
+.menu .toggle .bars::before,.bars::after{
+  background: #999;
+  content: "";
+  display: inline-block;
+  height: 2px;
+  position: absolute;
   width: 18px;
 }
-.bars:before,
-.bars:after {
-  background: #999;
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  transition: all .2s ease-out;
-  width: 100%;
+.menu .toggle .bars::before{
+  top: 5px
 }
-.bars:before {
-  top: 5px;
+.menu .toggle .bars::after{
+  top: -5px
 }
-.bars:after {
-  top: -5px;
-}
-/*button*/
-.button.secondary {
-  border: 0;
-}
+/*Tabler Menu*/
+@media all and (min-width: 468px) {
+  .menu{
+      justify-content: center;
+  }
+  .menu .logo{
+      flex: 1;
+  }
+  .menu .item.button{
+      width: auto;
+      order: 1;
+      display: block;
+  }
+  .menu .toggle{
+      order: 2;
+  }
+  .menu .item.button.secondary{
+      border: 0;
+  }
+  .menu .item.button a{
+      text-decoration: none;
+      padding: 7px 15px;
+      background: teal;
+      border: 1px solid #006d6d;
+      border-radius: 50em;
 
-.button a {
-  padding: 7.5px 15px 7.5px 15px;
-  background: #006d6d;
-  border: 1px #006d6d solid;
-  border-radius:50em;
+  }
+  .menu .item.button.secondary a{
+      background: transparent;
+  }
+  .menu .item.button a:hover{
+      transition: all 0.25s;
+  }
+  .menu .item.button:not(.secondary) a:hover{
+      background: #006d6d;
+      border-color: #005959;
+  }
+  .menu .item.button.secondary{
+      color: #ddd;
+  }
 }
-.button.secondary a {
-  background: transparent;    
-}
-.button a:hover {
-  text-decoration: none;
-  transition:all .25s;
-}
-.button:not(.secondary) a:hover {
-  background: teal;
-  border-color: #005959;
-}
-.button.secondary a:hover {
-  color: teal;
-} 
-
-/* Desktop menu */
-@media all and (min-width: 768px) {
-  .item {
+@media  all and (min-width: 768px) {
+  .menu .item{
       display: block;
       width: auto;
   }
-  .toggle {
+  .toggle{
       display: none;
   }
-  .logo {
+  .menu .logo{
       order: 0;
   }
-  
-  .item {
+  .menu .item{
       order: 1;
   }
- 
-  .button
-  {
+  .menu .item.button{
       order: 2;
   }
-  .navbar{
-    height:10vh;
+  .menu li{
+      padding: 15px 10px;
   }
-  .menu{
-    margin-bottom: 300px;
+  .menu li.button{
+      padding-right: 0;
   }
-  .menu li {
-      padding: 10px 20px 10px 20px;
-  }
-  
 }
